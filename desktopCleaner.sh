@@ -25,26 +25,18 @@ textDIR=./textFiles
 imageDIR=./imageFiles
 videoDIR=./videoFiles
 
-if [ -d "$textDIR" ]; then
-  echo $textDIR "already exists"
-elif [ ! -d "$textDIR" ]; then
-  echo "creating" $textDIR
-  mkdir $textDIR
-fi
+function folderCreation() {
+  if [ -d "$1" ]; then
+    echo $1 "already exists"
+  elif [ ! -d "$1" ]; then
+    echo "creating" $1
+    mkdir $1
+  fi
+}
 
-if [ -d "$imageDIR" ]; then
-  echo $imageDIR "already exists"
-elif [ ! -d "$imageDIR" ]; then
-  echo "creating" $imageDIR
-  mkdir $imageDIR
-fi
-
-if [ -d "$videoDIR" ]; then
-  echo $videoDIR "already exists"
-elif [ ! -d "$videoDIR" ]; then
-  echo "creating" $videoDIR
-  mkdir $videoDIR
-fi
+folderCreation "$textDIR"
+folderCreation "$imageDIR"
+folderCreation "$videoDIR"
 
 echo "moving files"
 
